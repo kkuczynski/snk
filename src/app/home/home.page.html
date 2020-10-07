@@ -12,7 +12,7 @@
         <ion-icon *ngIf=getIsPlaying() slot="icon-only" name="pause" ></ion-icon>
         <ion-icon *ngIf=!getIsPlaying() slot="icon-only" name="play" ></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button (click)=restart()>
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
       </ion-button>
 
