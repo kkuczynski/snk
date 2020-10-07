@@ -1,20 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      
+      <ion-icon name="sunny-outline"></ion-icon> <ion-toggle id="themeToggle" slot="end"></ion-toggle><ion-icon name="moon-outline"></ion-icon>
+    </ion-buttons>
+    <ion-label>
+      &nbsp;&nbsp; Length: {{getHeadValue()}}
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)=pause()>
+        <ion-icon *ngIf=getIsPlaying() slot="icon-only" name="pause" ></ion-icon>
+        <ion-icon *ngIf=!getIsPlaying() slot="icon-only" name="play" ></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" id=content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <canvas id=canvas>
+
+  </canvas>
+  <div *ngIf=!getIsPlaying() id=paused (click)=pause()>
+
+
+    <ion-icon slot="icon-only" name=play id=play-icon></ion-icon>
+    
+    
+    </div>
+ 
 </ion-content>
+
+<div id=left (click)=turnLeft()>
+
+</div>
+<div id=right (click)=turnRight()> 
+
+</div>
+
+
+
