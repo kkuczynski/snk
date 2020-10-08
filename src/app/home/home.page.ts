@@ -146,6 +146,8 @@ export class HomePage implements OnInit {
 
   initSnake() {
     this._numberOfTreats = 0;
+    this._moveJ=1;
+    this._moveI=0;
     let i = Math.floor(this._numberOfSquaresVertically / 2)-8;
     let x = 1;
     
@@ -209,6 +211,7 @@ export class HomePage implements OnInit {
       this._gameArray[this._headI][this._headJ] = this._headValue;
       this._numberOfTreats--;
     } else if (this._gameArray[this._headI][this._headJ] > 0) { //snake bit self
+      //console.log('wow')
       this.gameOver()
     }
   }
@@ -223,6 +226,7 @@ export class HomePage implements OnInit {
       if (this._playing) {
         this.generateTreats();
         this.drawCanvas();
+        //console.log('pl')
       }
     }, 1000 / 60);
 
@@ -249,6 +253,8 @@ export class HomePage implements OnInit {
   }
 
   pause(){
+    //console.log('gameF:' + this._gameFinished)
+    //console.log('playing:' + this._playing)
     if(this._playing){
     this._playing = false;
     } else {      
@@ -258,8 +264,8 @@ export class HomePage implements OnInit {
       }
       this._playing = true;
     }
-    console.log(this._gameFinished)
-    console.log(this._playing)
+    //console.log('gameF:' +this._gameFinished)
+    //console.log('playing:' +this._playing)
   }
 
   restart(){
